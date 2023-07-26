@@ -1,0 +1,33 @@
+mutation MyMutation {
+	insert_posts(
+		objects: [
+			{
+				author_id: 4
+				content: "This is my first blog post"
+				likes: 0
+			}
+		]
+	) {
+		returning {
+			id
+			content
+			author_id
+		}
+	}
+}
+
+
+//response:
+{
+	"data": {
+		"insert_posts": {
+			"returning": [
+				{
+					"id": 4,
+					"content": "This is my first blog post",
+					"author_id": 4
+				}
+			]
+		}
+	}
+}

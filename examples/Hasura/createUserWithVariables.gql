@@ -1,0 +1,24 @@
+mutation MyMutation($birthday: String, $name: String, $nick: String) {
+	insert_users(
+		objects: { birthday: $birthday, displayed_name: $name, nick: $nick }
+	) {
+		affected_rows
+		
+	}
+}
+
+//variables:
+{
+	"birthday": "01.01.2000",
+	"name": "Alice",
+	"nick": "123"
+}
+
+//response: 
+{
+	"data": {
+		"insert_users": {
+			"affected_rows": 1
+		}
+	}
+}

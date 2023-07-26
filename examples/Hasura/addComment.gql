@@ -1,0 +1,23 @@
+mutation MyMutation {
+	insert_comments(
+		objects: { post_id: 4, author_id: 4, content: "hello", likes: 0 }
+	) {
+		returning {
+			id
+		}
+	}
+}
+
+
+//response:
+{
+	"data": {
+		"insert_comments": {
+			"returning": [
+				{
+					"id": 32
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+mutation MyMutation($id: String, $newName: String) {
+	update_users(
+		where: { nick: { _eq: $id } }
+		_set: { displayed_name: $newName }
+	) {
+		returning {
+			id
+			displayed_name
+		}
+	}
+}
+
+
+//variables: 
+{
+	"id": "1",
+	"newName": "tomasz"
+}

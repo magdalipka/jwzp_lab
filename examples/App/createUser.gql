@@ -1,0 +1,27 @@
+mutation MyMutation($nick: String, $name: String, $birthday: String) {
+	addUser(nick: $nick, displayedName: $name, birthday: $birthday) {
+		id
+		nick
+		displayedName
+		birthday
+	}
+}
+
+//variables:
+{
+	"nick": "test-user-1",
+	"name": "Test User",
+	"birthday": "2000-01-01"
+}
+
+//response:
+{
+	"data": {
+		"addUser": {
+			"id": 3,
+			"nick": "test-user-1",
+			"displayedName": "Test User",
+			"birthday": "2000-01-01"
+		}
+	}
+}

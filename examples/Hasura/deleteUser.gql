@@ -1,0 +1,25 @@
+mutation MyMutation($id: Int) {
+	delete_users(where: { id: { _eq: $id } }) {
+		returning {
+			id
+			nick
+			displayed_name
+			birthday
+		}
+	}
+}
+
+
+//variables:
+{
+	"id": 3
+}
+
+//response:
+{
+	"data": {
+		"delete_users": {
+			"returning": []
+		}
+	}
+}

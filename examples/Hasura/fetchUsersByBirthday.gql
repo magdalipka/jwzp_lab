@@ -1,0 +1,33 @@
+query MyQuery($birthday: String) {
+	users(where: { birthday: { _gt: $birthday } }) {
+		id
+		nick
+		displayed_name
+		birthday
+	}
+}
+
+//variables:
+{
+	"birthday": "2000-00-00"
+}
+
+// response: 
+{
+	"data": {
+		"users": [
+			{
+				"id": 4,
+				"nick": "magda123",
+				"displayed_name": "Magda",
+				"birthday": "2000-01-01"
+			},
+			{
+				"id": 5,
+				"nick": "kasia",
+				"displayed_name": "Kasia",
+				"birthday": "2000-01-01"
+			}
+		]
+	}
+}

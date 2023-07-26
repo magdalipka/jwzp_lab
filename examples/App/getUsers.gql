@@ -1,0 +1,104 @@
+query MyQuery($show: Boolean!) {
+	users {
+		id
+		nick (uppercased: false)
+		displayedName @include(if: $show)
+		birthday
+		posts {
+			id
+			content
+			text
+			comments {
+				id
+				content
+			}
+		}
+	}
+}
+
+// variables:
+{
+	"show": true
+}
+
+// response: 
+{
+	"data": {
+		"users": [
+			{
+				"id": 0,
+				"nick": "kasia",
+				"displayedName": "Kasia",
+				"birthday": "1970-01-01",
+				"posts": []
+			},
+			{
+				"id": 1,
+				"nick": "k@rol",
+				"displayedName": "Karol",
+				"birthday": "1970-01-01",
+				"posts": [
+					{
+						"id": 0,
+						"content": "Post 1",
+						"text": "Post author: 1",
+						"comments": []
+					},
+					{
+						"id": 1,
+						"content": "Post 2",
+						"text": "Post author: 1",
+						"comments": [
+							{
+								"id": 0,
+								"content": "Comment 1"
+							},
+							{
+								"id": 1,
+								"content": "Comment 2"
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": 2,
+				"nick": "krysia1",
+				"displayedName": "Krysia",
+				"birthday": "1970-01-01",
+				"posts": [
+					{
+						"id": 2,
+						"content": "Post 3",
+						"text": "Post author: 2",
+						"comments": [
+							{
+								"id": 2,
+								"content": "Comment 3"
+							},
+							{
+								"id": 3,
+								"content": "Comment 4"
+							}
+						]
+					},
+					{
+						"id": 3,
+						"content": "Post 4",
+						"text": "Post author: 2",
+						"comments": [
+							{
+								"id": 4,
+								"content": "Comment 5"
+							},
+							{
+								"id": 5,
+								"content": "Comment 6"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

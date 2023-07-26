@@ -1,0 +1,21 @@
+mutation MuMutation($postId: Int, $authorId: Int, $content: String) {
+	addComment(postId: $postId, authorId: $authorId, content: $content) {
+		id
+	}
+}	
+
+//variables:
+{
+	"postId": 1,
+	"authorId": 1,
+	"content": "very nice"
+}
+
+//response
+{
+	"data": {
+		"addComment": {
+			"id": 6
+		}
+	}
+}

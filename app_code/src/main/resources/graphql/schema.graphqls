@@ -1,0 +1,43 @@
+type Query {
+  users: [User]
+  userById(id: String): User
+  posts: [Post]
+  postById(id: String): Post
+}
+
+type Mutation {
+  addUser(nick: String, displayedName: String, birthday: String): User
+  addPost(authorId: Int, content: String): Post
+  addComment(postId: Int, authorId: Int, content: String): Comment
+}
+
+type User {
+  id: Int @admin
+  nick(uppercased: Boolean): String
+  displayedName: String
+  birthday: String @deprecated(reason: "Not supported anymore")
+  posts: [Post]
+  comments: [Comment]
+}
+
+type Post {
+  id: Int
+  authorId: Int
+  author: User
+  content: String
+  likes: Int
+  comments: [Comment]
+  text: String
+}
+
+type Comment {
+  id: Int
+  post: Post
+  authorId: Int
+  content: String
+  author: User
+  likes: Int
+}
+
+directive @admin on FIELD_DEFINITION
+
